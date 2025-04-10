@@ -1,4 +1,4 @@
-import 'package:dynamic_app/pages/home_page.dart';
+import 'package:dynamic_app/pages/intro_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: "Manrope",
+
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.white,
         ),
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
           selectionHandleColor: Colors.teal,
         ),
       ),
-      home: HomePage(),
+      home: IntroPage(),
     );
   }
 }
