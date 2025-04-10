@@ -12,6 +12,7 @@ class OfferPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        shadowColor: Colors.transparent,
         centerTitle: true,
         backgroundColor: Colors.white,
         title: Text('Offers', style: TextStyle(fontWeight: FontWeight.bold)),

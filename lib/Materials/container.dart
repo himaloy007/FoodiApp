@@ -32,7 +32,17 @@ class MyContainerBox extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => RestaurantPage(imagePath: foodImage),
+              builder:
+                  (context) => RestaurantPage(
+                    foodImage: foodImage,
+                    logo: logo,
+                    restaurant: restaurant,
+                    rating: rating,
+                    itemName: itemName,
+                    distance: distance,
+                    deliveryfee: deliveryfee,
+                    deliveryTime: deliveryTime,
+                  ),
             ),
           );
         },
@@ -43,12 +53,20 @@ class MyContainerBox extends StatelessWidget {
           ),
           child: Column(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
+              SizedBox(
+                height: 250,
+                width: double.infinity,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(12),
+                  ),
+                  child: Image.asset(
+                    foodImage,
+                    fit: BoxFit.cover,
+                    alignment: Alignment.center,
+                  ),
                 ),
-                child: Image.asset(foodImage, fit: BoxFit.cover),
               ),
               Padding(
                 padding: const EdgeInsets.all(15.0),
