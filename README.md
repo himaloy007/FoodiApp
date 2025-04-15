@@ -23,10 +23,10 @@ A modern and intuitive **food delivery mobile application** built with **Flutter
 
 ## 📸 Screenshots
 
-<img src="screenshots/home_page.png" width="300"/>
-<img src="screenshots/cart_page.png" width="300"/> 
-<img src="screenshots/offer_page.png" width="300"/> 
-<img src="screenshots/restaurant_page.png" width="300"/> 
+<img src="screenshots/home_page.jpg" width="300"/>
+<img src="screenshots/cart_page.jpg" width="300"/> 
+<img src="screenshots/offer_page.jpg" width="300"/> 
+<img src="screenshots/restaurant_page.jpg" width="300"/> 
 
 ---
 
