@@ -23,10 +23,10 @@ A modern and intuitive **food delivery mobile application** built with **Flutter
 
 ## 📸 Screenshots
 
-<img src="screenshots/home_page.png" width="300"/> <img src="screenshots/restaurant_list.png" width="300"/>
-<img src="screenshots/cart_page.png" width="300"/> <img src="screenshots/order_tracking.png" width="300"/>
-<img src="screenshots/offer_page.png" width="300"/> <img src="screenshots/restaurant_list.png" width="300"/>
-<img src="screenshots/restaurant_page.png" width="300"/> <img src="screenshots/order_tracking.png" width="300"/>
+<img src="screenshots/home_page.png" width="300"/>
+<img src="screenshots/cart_page.png" width="300"/> 
+<img src="screenshots/offer_page.png" width="300"/> 
+<img src="screenshots/restaurant_page.png" width="300"/> 
 
 ---
 
@@ -36,10 +36,4 @@ A modern and intuitive **food delivery mobile application** built with **Flutter
 - Flutter SDK installed
 - An emulator or real device to run the app
 
-### Installation
 
-```bash
-git clone https://github.com/himaloy007/FoodiApp.git
-cd FoodiApp
-flutter pub get
-flutter run
