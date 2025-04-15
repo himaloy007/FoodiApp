@@ -1,8 +1,12 @@
+import 'package:dynamic_app/Materials/cart_items.dart';
 import 'package:dynamic_app/pages/intro_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(create: (context) => CartItem(), child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {

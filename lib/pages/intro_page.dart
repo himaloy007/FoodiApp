@@ -1,4 +1,5 @@
 import 'package:dynamic_app/pages/account_page.dart';
+import 'package:dynamic_app/pages/cart_page.dart';
 import 'package:dynamic_app/pages/home_page.dart';
 import 'package:dynamic_app/pages/offers.dart';
 import 'package:dynamic_app/pages/orders.dart';
@@ -36,7 +37,12 @@ class _IntroPageState extends State<IntroPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: _pages[_currentIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CartPage()),
+          );
+        },
         backgroundColor: Colors.white,
         elevation: 3,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

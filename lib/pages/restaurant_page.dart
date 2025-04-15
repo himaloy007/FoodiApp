@@ -1,4 +1,6 @@
+import 'package:dynamic_app/Materials/cart_items.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RestaurantPage extends StatefulWidget {
   final String foodImage;
@@ -62,6 +64,8 @@ class _RestaurantPageState extends State<RestaurantPage> {
 
   @override
   Widget build(BuildContext context) {
+    final cartItem = Provider.of<CartItem>(context);
+    final cartList = cartItem.cartItem[widget.restaurant] ?? [];
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -83,19 +87,43 @@ class _RestaurantPageState extends State<RestaurantPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        BackButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          color: Colors.red, // Optional: set color
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: BackButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            color: Colors.red, // Optional: set color
+                          ),
                         ),
                         Row(
                           children: [
-                            Icon(Icons.share_outlined, color: Colors.red),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.share_outlined,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ),
                             const SizedBox(width: 16),
-                            IconButton(
-                              onPressed: toggleFavorite,
-                              icon: Icon(favorites, color: Colors.red),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: IconButton(
+                                onPressed: toggleFavorite,
+                                icon: Icon(favorites, color: Colors.red),
+                              ),
                             ),
                           ],
                         ),
@@ -183,6 +211,133 @@ class _RestaurantPageState extends State<RestaurantPage> {
                   ),
                 ],
               ),
+            ),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 15, top: 20),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Most Popular🔥",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                GridView.builder(
+                  padding: const EdgeInsets.all(10),
+                  shrinkWrap:
+                      true, // Ensures the GridView takes only as much space as needed
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, // 2 columns
+                    crossAxisSpacing: 10, // Spacing between columns
+                    mainAxisSpacing: 10, // Spacing between rows
+                    childAspectRatio:
+                        1, // Adjust the aspect ratio to make rectangles
+                  ),
+                  itemCount: cartList.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                Positioned.fill(
+                                  child: Image.asset(
+                                    cartList[index][0],
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: 0,
+                                  right: 0,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.only(
+                                        bottomRight: Radius.circular(10),
+                                        topLeft: Radius.circular(10),
+                                      ),
+                                    ),
+                                    child: IconButton(
+                                      onPressed: () {
+                                        cartItem.addToCart(cartList[index]);
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              "${cartList[index][1]} added to cart",
+                                              textAlign: TextAlign.center,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                            duration: const Duration(
+                                              seconds: 1,
+                                            ),
+                                            backgroundColor:
+                                                const Color.fromARGB(
+                                                  255,
+                                                  244,
+                                                  67,
+                                                  54,
+                                                ),
+                                            behavior: SnackBarBehavior.floating,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                            ),
+                                            margin: const EdgeInsets.all(16),
+                                          ),
+                                        );
+                                      },
+                                      icon: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 5),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    cartList[index][1],
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ), // Item name
+                                  Text("from Taka ${cartList[index][2]}"),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ), // Item price
+                      ],
+                    );
+                  },
+                ),
+              ],
             ),
           ],
         ),
