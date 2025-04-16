@@ -69,22 +69,20 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 );
                               },
-                              child: Expanded(
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.search,
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.search,
+                                    color: Colors.grey.shade700,
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Text(
+                                    "Search for restaurants...",
+                                    style: TextStyle(
                                       color: Colors.grey.shade700,
                                     ),
-                                    const SizedBox(width: 5),
-                                    Text(
-                                      "Search for restaurants...",
-                                      style: TextStyle(
-                                        color: Colors.grey.shade700,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),

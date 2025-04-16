@@ -2,7 +2,7 @@ import 'package:dynamic_app/pages/account_page.dart';
 import 'package:dynamic_app/pages/cart_page.dart';
 import 'package:dynamic_app/pages/home_page.dart';
 import 'package:dynamic_app/pages/offers.dart';
-import 'package:dynamic_app/pages/orders.dart';
+import 'package:dynamic_app/pages/orders.dart'; 
 import 'package:flutter/material.dart';
 
 class IntroPage extends StatefulWidget {
