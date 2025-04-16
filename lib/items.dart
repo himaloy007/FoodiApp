@@ -1,6 +1,5 @@
 class Items {
   List<String> images = [
-    'images/kindpng_2443776.png',
     'images/food_banner_32.jpg',
     'images/4.jpg',
     'images/food_banner_03.jpg',

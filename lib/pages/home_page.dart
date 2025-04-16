@@ -1,4 +1,5 @@
 import 'package:dynamic_app/items.dart';
+import 'package:dynamic_app/pages/map_page.dart';
 import 'package:dynamic_app/pages/offer_show_page.dart';
 import 'package:dynamic_app/pages/search_page.dart';
 import 'package:flutter/material.dart';
@@ -17,23 +18,52 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.red.shade700,
-        toolbarHeight: 100,
+        toolbarHeight: 105,
         flexibleSpace: Padding(
           padding: const EdgeInsets.only(left: 15, right: 10),
           child: Column(
             children: [
-              const SizedBox(height: 30),
+              const SizedBox(height: 37),
               Row(
                 children: [
-                  Expanded(
-                    child: Text(
-                      "Deliver to",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TapToAddMarkerMap(),
+                        ),
+                      );
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        
+                        Row(
+                         children: [
+                            Text(
+                              "Deliver to",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 22,width: 5,
+                              child: Icon(Icons.expand_more,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
+                        Text(
+                          "Santosh,Tangail",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
                     ),
                   ),
+                  Spacer(),
                   IconButton(
                     onPressed: () {},
                     icon: Container(
@@ -47,6 +77,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
+
               Row(
                 children: [
                   Expanded(
@@ -131,6 +162,7 @@ class _HomePageState extends State<HomePage> {
                     height: 250,
                     width: double.infinity,
                     child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       itemCount: Items().images.length,
                       itemBuilder: (context, index) {
@@ -146,15 +178,12 @@ class _HomePageState extends State<HomePage> {
                               ),
                             );
                           },
-                          child: Container(
-                            padding: EdgeInsets.only(right: 10, left: 10),
-                            margin: EdgeInsets.only(right: 10),
-                            decoration: BoxDecoration(
-                              color: Colors.red,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 5),
+                            child: ClipRRect(
                               borderRadius: BorderRadius.circular(12),
+                              child: Image.asset(Items().images[index]),
                             ),
-
-                            child: Image.asset(Items().images[index]),
                           ),
                         );
                       },
